@@ -1,0 +1,22 @@
+class Solution(object):
+    def halvesAreAlike(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        s = s.lower()
+        len_of_s = len(s)
+        vowels = "aeiou"
+        half_of = len_of_s // 2 
+        first_half = s[:half_of]
+        second_half = s[half_of:]
+        count_of_first = 0 
+        count_of_second = 0 
+        for i in first_half:
+            if i in vowels:
+                count_of_first += 1 
+        for j in second_half:
+            if j in vowels:
+                count_of_second += 1 
+        
+        return count_of_first == count_of_second
