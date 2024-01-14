@@ -1,0 +1,17 @@
+class Solution:
+    def repeatedRows(self, arr, m ,n):
+        #code here
+        sec = []
+        ans = []
+        dic = dict()
+        for curr_arr in arr:
+            curr = ''
+            for x in curr_arr:
+                curr += str(x)
+            sec.append(curr)
+        for i in range(m):
+            if sec[i] not in dic:
+                dic[sec[i]] = 1
+            else:
+                ans.append(i)
+        return ans
