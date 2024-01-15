@@ -1,31 +1,16 @@
-N = 1000001
-primes = [1] * N
-
-def Sieve():
-    primes[0] = 0
-    primes[1] = 0
-    for i in range(2, int(N**0.5) + 1):
-        if primes[i] == 1:
-            for j in range(i * i, N, i):
-                primes[j] = 0
-
-def GetPrimes(r):
-    ds = []
-    for i in range(2, int(r**0.5) + 1):
-        if primes[i] == 1:
-            ds.append(i)
-    return ds
-
-def main():
-    Sieve()
-    l, r = map(int, input().split())
-    length = r - l + 1
-    segment_sieve = [1] * length
-    help_primes = GetPrimes(r)
-
-    for i in help_primes:
-        fm = (l // i) * i
-        if fm < l:
-            fm += i
-        for j in range(max(i * i, fm), r, fm):
-            segment_sieve[j - l] = 0
+from math import sqrt
+class Solution:
+    def primeRange(self,M,N):
+        
+        lis = [True] * (N + 1)
+        lis[0] = False
+        lis[1] = False
+        for i in range(2,int(sqrt(N + 1)) + 1):
+            if lis[i]:
+                for j in range(i * i, N + 1, i):
+                    lis[j] = False
+        ans = []
+        for i in range(M, N + 1):
+            if lis[i]:
+                ans.append(i)
+        return ans
