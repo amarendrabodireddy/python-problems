@@ -1,0 +1,33 @@
+def power(a,b):
+    val=1
+    while(b):
+        if(b%2 !=0):
+            b-=1
+            val *=a%mod
+        else:
+            b//=2
+            a *=a%mod
+    return val%mod
+mod=(10**9)+7
+n=int(input())
+l=list(map(int,input().split()))
+even_count=0
+odd_count=0
+for i in range(len(l)):
+    if l[i]%2==0:
+        even_count+=1
+        even_count%=mod
+    else:
+        odd_count+=1
+        odd_count%=mod
+if(odd_count==0):
+    s=(power(2,even_count))%mod
+    s=s-1   
+    print(s%mod)
+else:
+    s=(power(2,even_count))%mod
+    s=s-1
+    f=(power(2,odd_count-1)%mod)
+    f-=1
+    ans=((s*f)%mod+(s%mod)+(f%mod))
+    print(ans%mod)
