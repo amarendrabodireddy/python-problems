@@ -1,0 +1,23 @@
+def fun(idx,l,n,k,ds):
+    #base case
+    if(idx==n):
+        if(k==0):
+            for i in ds:
+                print(i,end=" ")
+            print()
+        return
+    #recursive case
+    #pick
+    if(l[idx]<=k):
+        ds.append(l[idx])
+        k=k-l[idx]
+        fun(idx,l,n,k,ds)
+        k=k+l[idx]
+        ds.pop()
+    #non pick
+    fun(idx+1,l,n,k,ds)
+n=int(input())
+k=int(input())
+l=list(map(int,input().split()))
+ds=[]
+fun(0,l,n,k,ds)
