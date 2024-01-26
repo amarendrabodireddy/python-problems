@@ -1,0 +1,14 @@
+def fun(s,frq,ans):
+    if len(ans)==len(s):
+        print(ans)
+        return
+    #recursive case
+    for i in range(len(s)):
+        if(frq[i]==0):
+            frq[i]=1
+            fun(s,frq,ans+s[i])
+            frq[i]=0
+n=int(input())
+s=input()
+frq=[0]*n
+fun(s,frq,"")
